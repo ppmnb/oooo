@@ -192,25 +192,25 @@ def gen_user(choice):
             pass
     return username
 
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker)
         
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
 async def _(event):
     if ispay2[0] == "yes":
-        await fifthon.send_file(event.chat_id, 'banned.txt')
+        await forthon.send_file(event.chat_id, 'banned.txt')
 
 
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker2)
 # صيد عدد نوع قناة
 
 
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -221,13 +221,13 @@ async def _(event):
         trys = 0
         await event.edit(f"حسناً سأفحص نوع `{choice}` من اليوزرات على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-        @fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الصيد"))
+        @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الصيد"))
         async def _(event):
             if ispay2[0] == "yes":
                 if "on" in isclaim:
-                    await event.edit(f"الصيد وصل لـ({trys}) من المحاولات")
+                    await event.edit(f"الصيد وصل ({trys}) من المحاولات")
                 elif "off" in isclaim:
-                    await event.edit("لايوجد صيد شغال !")
+                    await event.edit("صيدك مامشغل  !")
                 else:
                     await event.edit("خطأ")
             else:
@@ -251,13 +251,10 @@ async def _(event):
                     await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
 ┏━━━━━┓
-- By ↣ @iziii 
+- By ↣ @S_Y_N 
 ┗━━━━━┛
 ┏━━━━━┓
-↣ (@{username})
-┗━━━━━┛
-┏━━━━━┓
-- By ↣@ZBaak 
+- Done ↣ (@{username})
 ┗━━━━━┛
 ●━━━━━━━━●
 
@@ -267,13 +264,13 @@ async def _(event):
                     with open("banned.txt", "a") as f:
                         f.write(f"\n{username}")
                 except Exception as eee:
-                    await fifthon.send_message(event.chat_id, f'''خطأ مع {username}
+                    await forthon.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
                     if "A wait of" in str(eee):
                         break
                     else:
-                        await fifthon.send_message(event.chat.id, " اجاك متاح !")
+                        await forthon.send_message(event.chat.id, " اجاك متاح !")
             else:
                 pass
             trys += 1
@@ -283,7 +280,7 @@ async def _(event):
         trys = ""
         await event.client.send_message(event.chat_id, "! انتهى الصيد")
         
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         trys = 0
@@ -296,7 +293,7 @@ async def _(event):
             ch = str(msg[1])
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-            @fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.حالة التثبيت التلقائي"))
+            @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.حالة التثبيت التلقائي"))
             async def _(event):
                 if "on" in isauto:
                     msg = await event.edit(f"التثبيت وصل لـ({trys}) من المحاولات")
@@ -314,29 +311,26 @@ async def _(event):
                 isav = que.get()
                 if "Available" in isav:
                     try:
-                        await fifthon(functions.channels.UpdateUsernameRequest(
+                        await forthon(functions.channels.UpdateUsernameRequest(
                             channel=ch, username=username))
                         await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
 ┏━━━━━┓
-- By ↣ @iziii 
+- By ↣ @S_Y_N
 ┗━━━━━┛
 ┏━━━━━┓
-↣ (@{username})
-┗━━━━━┛
-┏━━━━━┓
-- By ↣@ZBaak 
-┗━━━━━┛
+- Done↣ (@{username})
+┗━━━━━┛ 
 ●━━━━━━━━●
 
     ''')
                         break
                     except telethon.errors.rpcerrorlist.UsernameInvalidError:
-                        await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
+                        await event.client.send_message(event.chat_id, f"يوزر مبند ميفيدك `{username}` ❌❌")
                         break
                     except Exception as eee:
 
-                        await fifthon.send_message(event.chat_id, f'''خطأ مع {username}
+                        await forthon.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
                         if "A wait of" in str(eee):
@@ -356,18 +350,15 @@ async def _(event):
             username = str(msg[0])
             ch = str(msg[1])
             try:
-                await fifthon(functions.channels.UpdateUsernameRequest(
+                await forthon(functions.channels.UpdateUsernameRequest(
                     channel=ch, username=username))
                 await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
 ┏━━━━━┓
-- By ↣ @iziii 
+- By ↣ @S_Y_N 
 ┗━━━━━┛
 ┏━━━━━┓
-↣ (@{username})
-┗━━━━━┛
-┏━━━━━┓
-- By ↣@ZBaak 
+- Done↣ (@{username})
 ┗━━━━━┛
 ●━━━━━━━━●
 
@@ -375,7 +366,7 @@ async def _(event):
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
             except Exception as eee:
-                await fifthon.send_message(event.chat_id, f'''خطأ مع {username}
+                await forthon.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
 Threads=[] 
