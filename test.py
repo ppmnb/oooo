@@ -14,8 +14,8 @@ BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
 
-class Jmthon_GlobalCollection(BASE):
-    __tablename__ = "jmthon_globalcollection"
+class forhon_GlobalCollection(BASE):
+    __tablename__ = "forthon_globalcollection"
     keywoard = Column(UnicodeText, primary_key=True)
     contents = Column(PickleType, primary_key=True, nullable=False)
 
@@ -37,9 +37,9 @@ class Jmthon_GlobalCollection(BASE):
         )
 
 
-Jmthon_GlobalCollection.__table__.create(checkfirst=True)
+Forthon_GlobalCollection.__table__.create(checkfirst=True)
 
-JMTHON_GLOBALCOLLECTION = threading.RLock()
+ForTHON_GLOBALCOLLECTION = threading.RLock()
 
 
 class COLLECTION_SQL:
@@ -51,7 +51,7 @@ COLLECTION_SQL_ = COLLECTION_SQL()
 
 
 def add_to_collectionlist(keywoard, contents):
-    with JMTHON_GLOBALCOLLECTION:
+    with FORTHON_GLOBALCOLLECTION:
         keyword_items = Jmthon_GlobalCollection(keywoard, tuple(contents))
 
         SESSION.merge(keyword_items)
@@ -61,9 +61,9 @@ def add_to_collectionlist(keywoard, contents):
 
 
 def del_keyword_collectionlist(keywoard):
-    with JMTHON_GLOBALCOLLECTION:
+    with FORTHON_GLOBALCOLLECTION:
         keyword_items = (
-            SESSION.query(Jmthon_GlobalCollection.keywoard)
+            SESSION.query(Forthon_GlobalCollection.keywoard)
             .filter(Jmthon_GlobalCollection.keywoard == keywoard)
             .delete()
         )
@@ -74,7 +74,7 @@ def del_keyword_collectionlist(keywoard):
 def get_collectionlist_items():
     try:
         chats = SESSION.query(
-            Jmthon_GlobalCollection.keywoard).distinct().all()
+            Forthon_GlobalCollection.keywoard).distinct().all()
         return [i[0] for i in chats]
     finally:
         SESSION.close()
@@ -89,7 +89,7 @@ logging.basicConfig(
 LOGS = logging.getLogger(__name__)
 
 
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.تحديث"))
+@Forthon.on(events.NewMessage(outgoing=True, pattern=r"\.تحديث"))
 async def _(event):
 
     sandy = await event.edit(
