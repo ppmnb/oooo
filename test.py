@@ -24,7 +24,7 @@ class forhon_GlobalCollection(BASE):
         self.contents = tuple(contents)
 
     def __repr__(self):
-        return "<Jmthon Global Collection lists '%s' for %s>" % (
+        return "<Forthon Global Collection lists '%s' for %s>" % (
             self.contents,
             self.keywoard,
         )
@@ -64,7 +64,7 @@ def del_keyword_collectionlist(keywoard):
     with FORTHON_GLOBALCOLLECTION:
         keyword_items = (
             SESSION.query(Forthon_GlobalCollection.keywoard)
-            .filter(Jmthon_GlobalCollection.keywoard == keywoard)
+            .filter(Forthon_GlobalCollection.keywoard == keywoard)
             .delete()
         )
         COLLECTION_SQL_.CONTENTS_LIST.pop(keywoard)
