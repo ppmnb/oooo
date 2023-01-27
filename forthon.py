@@ -50,7 +50,7 @@ async def join_channel():
         pass
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"هم"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r".هم"))
 async def _(event):
     if not event.is_reply:
         return await event.edit(
@@ -93,14 +93,14 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
             pass
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.الاوامر"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.commands"))
 async def _(event):
     await event.edit(commands)
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.فحص"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.check up"))
 async def _(event):
     start = datetime.datetime.now()
-    await event.edit(" جارٍ الفحص انتضر ...")
+    await event.edit(" Checking Wait  ...")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(f'''
@@ -119,19 +119,14 @@ async def _(event):
     await event.edit(sec1)
 
 
+
 @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.م2"))
-async def _(event):
-    start = datetime.datetime.now()
-    await event.edit(sec2)
-
-
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.م3"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec3)
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.م4"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.م3"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec4)
@@ -142,12 +137,12 @@ ownerhson_id = 1883120653
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id :
-        order = await event.reply('اهلا مطوري علي @S_Y_N')
+        order = await event.reply('Hello developers Ali  @S_Y_N')
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.Restart "))
 async def update(event):
-    await event.edit("• جارِ اعادة تشغيل السورس ..\n• انتضر 1-2 دقيقة  .")
+    await event.edit("• The source is being restarted  ..\n• minute انتضر 1-2    .")
     await forthon.disconnect()
     await forthon.send_message("me", "`اكتملت اعادة تشغيل السورس !`")
 
