@@ -1,4 +1,4 @@
-import random
+import  random
 import threading
 import asyncio
 import telethon
@@ -246,7 +246,7 @@ async def _(event):
             if "Available" in isav:
                 await asyncio.sleep(1)
                 try:
-                    await fifthon(functions.channels.UpdateUsernameRequest(
+                    await forthon(functions.channels.UpdateUsernameRequest(
                         channel=ch, username=username))
                     await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
@@ -343,7 +343,7 @@ async def _(event):
             trys = ""
             isclaim.clear()
             isclaim.append("off")
-            await fifthon.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
+            await forthon.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
         if msg[0] == "يدوي":  # تثبيت يدوي يوزر قناة
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` !")
             msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
