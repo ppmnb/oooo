@@ -192,25 +192,25 @@ def gen_user(choice):
             pass
     return username
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.Checker"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker)
         
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.banned users "))
 async def _(event):
     if ispay2[0] == "yes":
         await forthon.send_file(event.chat_id, 'banned.txt')
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.types"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker2)
 # صيد عدد نوع قناة
 
 
-@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.Hunting (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -219,15 +219,15 @@ async def _(event):
         ch = str(msg[2])
         choice = str(msg[1])
         trys = 0
-        await event.edit(f"حسناً سأفحص نوع `{choice}` من اليوزرات على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
+        await event.edit(f"حسناً لاتقلق سوف ابحث عن نوع `{choice}` من اليوزرات على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-        @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الصيد"))
+        @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.trys"))
         async def _(event):
             if ispay2[0] == "yes":
                 if "on" in isclaim:
-                    await event.edit(f"الصيد وصل ({trys}) من المحاولات")
+                    await event.edit(f"الصيد  صار ({trys}) من المحاولات")
                 elif "off" in isclaim:
-                    await event.edit("صيدك مامشغل  !")
+                    await event.edit(" Hunting is not working  !")
                 else:
                     await event.edit("خطأ")
             else:
@@ -270,7 +270,7 @@ async def _(event):
                     if "A wait of" in str(eee):
                         break
                     else:
-                        await forthon.send_message(event.chat.id, " اجاك متاح !")
+                        await forthon.send_message(event.chat.id, " You have available user ! !")
             else:
                 pass
             trys += 1
@@ -278,7 +278,7 @@ async def _(event):
         isclaim.clear()
         isclaim.append("off")
         trys = ""
-        await event.client.send_message(event.chat_id, "! انتهى الصيد")
+        await event.client.send_message(event.chat_id, "! Hunting done!")
         
 @forthon.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
 async def _(event):
@@ -298,7 +298,7 @@ async def _(event):
                 if "on" in isauto:
                     msg = await event.edit(f"التثبيت وصل لـ({trys}) من المحاولات")
                 elif "off" in isauto:
-                    await event.edit("لايوجد تثبيت شغال !")
+                    await event.edit("The pin is not working !")
                 else:
                     await event.edit("خطأ")
             for i in range(int(msg[0])):
@@ -326,7 +326,7 @@ async def _(event):
     ''')
                         break
                     except telethon.errors.rpcerrorlist.UsernameInvalidError:
-                        await event.client.send_message(event.chat_id, f"يوزر مبند ميفيدك `{username}` ❌❌")
+                        await event.client.send_message(event.chat_id, f"Username is banned `{username}` ❌❌")
                         break
                     except Exception as eee:
 
