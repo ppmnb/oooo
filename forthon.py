@@ -21,7 +21,7 @@ from checktele import *
 
 # -
 
-fifthon.start()
+forthon.start()
 
 y = datetime.datetime.now().year
 m = datetime.datetime.now().month
@@ -145,7 +145,7 @@ async def OwnerStart(event):
         order = await event.reply('اهلا مطوري علي @S_Y_N')
 
 
-@fifthon.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
+@forthon.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
 async def update(event):
     await event.edit("• جارِ اعادة تشغيل السورس ..\n• انتضر 1-2 دقيقة  .")
     await forthon.disconnect()
